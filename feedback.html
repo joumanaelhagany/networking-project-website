@@ -9,13 +9,13 @@
 
   <form id="feedbackForm">
     <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+    <input type="text" id="name" name="name"><br><br>
 
     <label for="topic">Favorite Networking Topic:</label><br>
-    <input type="text" id="topic" name="topic" required><br><br>
+    <input type="text" id="topic" name="topic"><br><br>
 
     <label for="comment">Comment:</label><br>
-    <textarea id="comment" name="comment" rows="5" cols="30" required></textarea><br><br>
+    <textarea id="comment" name="comment" rows="5" cols="30"></textarea><br><br>
 
     <button type="submit">Submit</button>
   </form>
@@ -24,27 +24,28 @@
   <div id="output"></div>
 
   <script>
-  const form = document.getElementById("feedbackForm");
-  const output = document.getElementById("output");
+    const form = document.getElementById("feedbackForm");
+    const output = document.getElementById("output");
 
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const topic = document.getElementById("topic").value.trim();
-    const comment = document.getElementById("comment").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const topic = document.getElementById("topic").value.trim();
+      const comment = document.getElementById("comment").value.trim();
 
-    if (!name || !topic || !comment) {
-      alert("Please fill in all fields.");
-      return;
-    }
+      if (name === "" || topic === "" || comment === "") {
+        alert("Please fill in all fields.");
+        output.innerHTML = "";
+        return;
+      }
 
-    output.innerHTML = `
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Favorite Topic:</strong> ${topic}</p>
-      <p><strong>Comment:</strong> ${comment}</p>
-    `;
-  });
-</script>
+      output.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Favorite Topic:</strong> ${topic}</p>
+        <p><strong>Comment:</strong> ${comment}</p>
+      `;
+    });
+  </script>
 </body>
 </html>
