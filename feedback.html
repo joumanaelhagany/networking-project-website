@@ -24,22 +24,27 @@
   <div id="output"></div>
 
   <script>
-    const form = document.getElementById("feedbackForm");
-    const output = document.getElementById("output");
+  const form = document.getElementById("feedbackForm");
+  const output = document.getElementById("output");
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      const name = document.getElementById("name").value;
-      const topic = document.getElementById("topic").value;
-      const comment = document.getElementById("comment").value;
+    const name = document.getElementById("name").value.trim();
+    const topic = document.getElementById("topic").value.trim();
+    const comment = document.getElementById("comment").value.trim();
 
-      output.innerHTML = `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Favorite Topic:</strong> ${topic}</p>
-        <p><strong>Comment:</strong> ${comment}</p>
-      `;
-    });
-  </script>
+    if (!name || !topic || !comment) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    output.innerHTML = `
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Favorite Topic:</strong> ${topic}</p>
+      <p><strong>Comment:</strong> ${comment}</p>
+    `;
+  });
+</script>
 </body>
 </html>
