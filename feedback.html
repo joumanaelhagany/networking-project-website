@@ -40,11 +40,20 @@
         return;
       }
 
-      output.innerHTML = `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Favorite Topic:</strong> ${topic}</p>
-        <p><strong>Comment:</strong> ${comment}</p>
-      `;
+      output.innerHTML = "";
+
+      const namePara = document.createElement("p");
+      namePara.textContent = "Name: " + name;
+
+      const topicPara = document.createElement("p");
+      topicPara.textContent = "Favorite Topic: " + topic;
+
+      const commentPara = document.createElement("p");
+      commentPara.textContent = "Comment: " + comment;
+
+      output.appendChild(namePara);
+      output.appendChild(topicPara);
+      output.appendChild(commentPara);
     });
   </script>
 </body>
